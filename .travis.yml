@@ -1,0 +1,5 @@
+language: c
+script: make bt/backtrace && ./bt/backtrace
+compiler:
+ - clang
+ - gcc
