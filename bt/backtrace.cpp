@@ -16,7 +16,6 @@
 #include<sys/time.h>
 
 
-
 typedef struct rlimit rlimit_type ;
 
 
@@ -110,7 +109,6 @@ int main( int, char** )
               std::ostream_iterator< std::string >
               ( std::cout << std::hex, "\n" ) );
     }
-
 
     return EXIT_SUCCESS ;
 }
