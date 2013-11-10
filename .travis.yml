@@ -1,5 +1,11 @@
 language: c
-script: make bt/backtrace && ./bt/backtrace
+script:
+ - make bt/backtrace
+ - ./bt/backtrace
 compiler:
  - clang
  - gcc
+before_install:
+ - sudo apt-get update
+install:
+ - sudo apt-get install libboost1.54-all-dev
