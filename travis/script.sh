@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-echo -n                               && \
-    mkdir --verbose --parents ./build && \
-    cd ./build                        && \
-    autoreconf --install --verbose .. && \
-    configure                         && \
-    make                              && \
-    make distcheck                    && \
+# cpp-crapola/travis/script.sh
+
+echo -n                                       && \
+    mkdir --verbose --parents ./build         && \
+    cd ./build                                && \
+    autoreconf --verbose --force --install .. && \
+    ../configure --verbose                    && \
+    make --debug                              && \
+    make --debug distcheck                    && \
     cd -
