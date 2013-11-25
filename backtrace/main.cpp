@@ -7,6 +7,7 @@
 #include<vector>
 
 #include<boost/exception/all.hpp>
+#include<boost/preprocessor/stringize.hpp>
 #include<boost/utility.hpp>
 
 #include<execinfo.h>
@@ -83,6 +84,14 @@ _stacktrace( void )
 
 int main( int, char** )
 {
+#if defined( __clang__ )
+    std::cout << "__clang__" << BOOST_PP_STRINGIZE( __clang__ ) << std::endl ;
+#elif defined( __GNUC__ )
+    std::cout << "__GNUC__" << BOOST_PP_STRINGIZE( __GNUC__ ) << std::endl ;
+#else
+#  error "unsupported compiler"
+#endif
+
     std::cout
         << "_getrlimit( RLIMIT_STACK ) == "
         << _getrlimit( RLIMIT_STACK )

@@ -1,7 +1,6 @@
 language: c
 script:
- - make bt/backtrace
- - ./bt/backtrace
+ - ./travis/script.sh
 compiler:
  - clang
  - gcc
