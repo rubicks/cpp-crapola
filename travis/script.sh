@@ -2,8 +2,6 @@
 
 # cpp-crapola/travis/script.sh
 
-autoconf --version
-
 echo -n                                       && \
     mkdir --verbose --parents ./m4            && \
     mkdir --verbose --parents ./build         && \
