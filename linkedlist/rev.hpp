@@ -1,4 +1,8 @@
-/* ll/rev.hpp */
+/* cpp-crapola/linkedlist/rev.hpp */
+
+
+#ifndef CPP_CRAPOLA___LINKEDLIST___REV_HPP
+#define CPP_CRAPOLA___LINKEDLIST___REV_HPP
 
 
 #include"ll.hpp"
@@ -21,3 +25,6 @@ namespace ll
         }
     }
 }
+
+
+#endif//ndef CPP_CRAPOLA___LINKEDLIST___REV_HPP

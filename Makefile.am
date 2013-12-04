@@ -10,3 +10,4 @@ libbt_a_SOURCES =			\
 bin_PROGRAMS = backtrace
 backtrace_SOURCES = $(top_srcdir)/backtrace/main.cpp
 backtrace_LDADD = libbt.a
+
