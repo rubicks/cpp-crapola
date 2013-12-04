@@ -4,15 +4,13 @@
 
 env | sort
 
-if [[ "master" -ne "${BRANCH}" ]]
+# exit 0
+
+if [ "master" -eq "${TRAVIS_BRANCH}" ]
 then
-    exit 0
+    echo -n                 && \
+        git checkout macosx && \
+        git merge master    && \
+        git push            && \
+        git checkout master
 fi
-
-exit 0
-
-echo -n                 && \
-    git checkout macosx && \
-    git merge master    && \
-    git push            && \
-    git checkout master

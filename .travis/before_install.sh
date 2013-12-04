@@ -2,9 +2,12 @@
 
 # cpp-crapola/.travis/before_install.sh
 
-if [[ "macosx" -eq "${BRANCH}" ]]
+if [ ! -z "${TRAVIS_BRANCH}" ]
 then
-    exit 0
+    if [ "master" -ne "${TRAVIS_BRANCH}" ]
+    then
+        exit 0
+    fi
 fi
 
 duration="-1"

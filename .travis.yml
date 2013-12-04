@@ -2,9 +2,6 @@ language: c
 compiler:
   - clang
   - gcc
-env:
-  global
-    - BRANCH=master
 # language: objective-c
 #   matrix:
 #     - CC=clang CXX=clang++
