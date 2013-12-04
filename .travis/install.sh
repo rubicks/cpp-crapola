@@ -7,7 +7,8 @@ install()
     for arg in ${@}
     do
         dpkg-query -l ${arg}
-        if [[ "0" -ne "" ]]
+        ret=${?}
+        if [[ "0" -ne "${ret}" ]]
         then
             sudo apt-get --assume-yes install ${arg}
         fi

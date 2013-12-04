@@ -1,6 +1,4 @@
 language: c
-script:
- - ./.travis/script.sh
 compiler:
  - clang
  - gcc
@@ -8,3 +6,13 @@ before_install:
  - ./.travis/before_install.sh
 install:
  - ./.travis/install.sh
+before_script:
+ - ./.travis/before_script.sh
+script:
+ - ./.travis/script.sh
+after_success:
+ - ./.travis/after_success.sh
+after_failure:
+ - ./.travis/after_failure.sh
+after_script:
+ - ./.travis/after_script.sh

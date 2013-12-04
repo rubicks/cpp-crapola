@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# cpp-crapola/travis/script.sh
+# cpp-crapola/.travis/script.sh
 
 echo -n                                       && \
     mkdir --verbose --parents ./m4            && \
