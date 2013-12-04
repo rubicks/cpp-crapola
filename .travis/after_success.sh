@@ -2,12 +2,14 @@
 
 # cpp-crapola/.travis/after_success.sh
 
-branch=$( git branch --list --no-color --no-column | awk '{print $2}' )
+env | sort
 
-if [[ "master" -ne "${branch}" ]]
+if [[ "master" -ne "${BRANCH}" ]]
 then
     exit 0
 fi
+
+exit 0
 
 echo -n                 && \
     git checkout macosx && \

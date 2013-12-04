@@ -2,6 +2,11 @@
 
 # cpp-crapola/.travis/install.sh
 
+if [[ "macosx" -eq "${BRANCH}" ]]
+then
+    exit 0
+fi
+
 install()
 {
     for arg in ${@}

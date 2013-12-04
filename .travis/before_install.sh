@@ -2,6 +2,11 @@
 
 # cpp-crapola/.travis/before_install.sh
 
+if [[ "macosx" -eq "${BRANCH}" ]]
+then
+    exit 0
+fi
+
 duration="-1"
 
 seconds_since_last_modification()
