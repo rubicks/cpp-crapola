@@ -6,7 +6,7 @@ env | sort
 
 # exit 0
 
-if [ "master" -eq "${TRAVIS_BRANCH}" ]
+if [ "master" == "${TRAVIS_BRANCH}" ]
 then
     echo -n                 && \
         git checkout macosx && \
