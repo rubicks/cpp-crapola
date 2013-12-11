@@ -27,6 +27,7 @@ AM_INIT_AUTOMAKE
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h sys/time.h])
+AC_HEADER_STDC
 
 # Checks for typedefs, structures, and compiler characteristics.
 

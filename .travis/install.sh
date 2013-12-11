@@ -2,9 +2,9 @@
 
 # cpp-crapola/.travis/install.sh
 
-if [ ! -z "${TRAVIS_BRANCH}" ]
+if [ "${TRAVIS_BRANCH}" ]
 then
-    if [ "master" -ne "${TRAVIS_BRANCH}" ]
+    if [ "master" != "${TRAVIS_BRANCH}" ]
     then
         exit 0
     fi
@@ -23,4 +23,4 @@ install()
     done
 }
 
-install libboost-all-dev
+install autoconf-archive libboost-all-dev
