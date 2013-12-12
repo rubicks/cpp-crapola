@@ -6,11 +6,10 @@
 
 # exit 0
 
-if [ "master" == "${TRAVIS_BRANCH}" ]
-then
-    echo -n                 && \
-        git checkout macosx && \
-        git merge master    && \
-        git push            && \
-        git checkout master
-fi
+[ "master" == ${TRAVIS_BRANCH} ] || exit 0
+
+source ${PROJECT_DIR}/scripts/_do_or_die.sh
+_do_or_die git checkout macosx
+_do_or_die git merge master
+_do_or_die git push
+_do_or_die git checkout master
