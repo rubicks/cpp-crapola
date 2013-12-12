@@ -4,7 +4,7 @@
 
 [ "Ubuntu" == ${_system_name} ] || exit 0
 
-duration="-1"
+duration="604800"
 seconds_since_last_modification()
 {
     duration=$( expr $( date +%s ) - $( stat -c %Y ${@} ) )
