@@ -2,7 +2,7 @@
 
 # cpp-crapola/.travis/after_success.sh
 
-env | sort
+# env | sort
 
 # exit 0
 

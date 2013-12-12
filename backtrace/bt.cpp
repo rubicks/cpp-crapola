@@ -1,7 +1,11 @@
 /* cpp-crapola/backtrace/bt.cpp */
 
 
-#include"bt.hpp"
+#if defined( HAVE_CONFIG_H )
+#  include "config.h"
+#else
+#  error "config.h"
+#endif
 
 #include<cerrno>
 #include<cstring>
@@ -17,6 +21,8 @@
 
 #include<sys/resource.h>
 #include<sys/time.h>
+
+#include"bt.hpp"
 
 
 namespace

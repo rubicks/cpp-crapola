@@ -37,8 +37,6 @@ AC_PROG_MAKE_SET
 #AC_USE_SYSTEM_EXTENSIONS
 AC_LANG_PUSH([C++])
 
-# Checks for libraries.
-
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h sys/time.h])
 AC_HEADER_STDC

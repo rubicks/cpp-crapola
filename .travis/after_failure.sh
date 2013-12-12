@@ -2,4 +2,4 @@
 
 # cpp-crapola/.travis/after_failure.sh
 
-env | sort
+# env | sort

@@ -2,7 +2,7 @@
 
 # cpp-crapola/.travis/before_install.sh
 
-if [ ! -z "${TRAVIS_BRANCH}" ]
+if [ "${TRAVIS_BRANCH}" ]
 then
     if [ "master" -ne "${TRAVIS_BRANCH}" ]
     then
@@ -30,3 +30,4 @@ then
 fi
 
 sudo apt-get update
+

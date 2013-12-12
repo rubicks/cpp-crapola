@@ -7,6 +7,8 @@ compiler:
 #     - CC=clang CXX=clang++
 #     - CC=gcc CXX=g++
 before_install:
+  - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
+  - echo && echo "\${PROJECT_DIR} == \"${PROJECT_DIR}\""
   - ./.travis/before_install.sh
 install:
   - ./.travis/install.sh
