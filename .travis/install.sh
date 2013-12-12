@@ -8,7 +8,7 @@ case "${_system_name}" in
     Ubuntu)
         _install_if_missing  \
             autoconf-archive \
-            libboost-all-dev
+            libboost-dev
         ;;
     OSX)
         _install_if_missing  \

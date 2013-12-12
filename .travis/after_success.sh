@@ -11,6 +11,6 @@
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 
 _do_or_die git checkout macosx
-_do_or_die git merge master
+_do_or_die git merge --no-edit master
 _do_or_die git push
 _do_or_die git checkout master
