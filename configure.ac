@@ -46,7 +46,7 @@ AC_HEADER_STDC
 # Checks for library functions.
 
 # checks for libraries
-AX_BOOST_BASE([1.48])
+AX_BOOST_BASE([1.48], [AX_BOOST_UNIT_TEST_FRAMEWORK])
 
 AC_CONFIG_FILES([Makefile])
 

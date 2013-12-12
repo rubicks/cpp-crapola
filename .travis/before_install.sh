@@ -29,6 +29,6 @@ then
     fi
 fi
 
-source ${PROJECT_DIR}/scripts/_noisy.sh
+source ${PROJECT_DIR}/scripts/_do_or_die.sh
 
-_noisy sudo apt-get --quiet update
+_do_or_die sudo apt-get update

@@ -12,8 +12,8 @@ function _do_or_die()
     if [[ "0" -ne "${ret}" ]]
     then
         echo "failure: \"${@}\" returned ${ret}"
+        exit ${ret}
     fi
-    exit ${ret}
 }
 
 if [ "_do_or_die.sh" == `basename ${0}` ]

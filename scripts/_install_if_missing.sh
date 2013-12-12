@@ -3,8 +3,8 @@
 # cpp-crapola/scripts/_install_if_missing.sh
 
 _dir="$(dirname $(readlink -nf ${BASH_SOURCE}))"
-source "${_dir}/_noisy.sh"     || exit 1
-source "${_dir}/_do_or_die.sh" || exit 1
+source ${_dir}/_noisy.sh     || exit 1
+source ${_dir}/_do_or_die.sh || exit 1
 
 function _install_if_missing()
 {
