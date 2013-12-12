@@ -2,8 +2,7 @@
 
 # cpp-crapola/scripts/_do_or_die.sh
 
-_dir="$(dirname $(readlink -nf ${BASH_SOURCE}))"
-source ${_dir}/_noisy.sh
+source ${PROJECT_DIR}/scripts/_noisy.sh || exit 1
 
 function _do_or_die()
 {

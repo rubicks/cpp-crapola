@@ -6,7 +6,7 @@
 
 # exit 0
 
-[ "master" == ${TRAVIS_BRANCH} ] || exit 0
+[ "master" == "${TRAVIS_BRANCH}" ] || exit 0
 
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 
