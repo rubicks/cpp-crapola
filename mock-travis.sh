@@ -10,7 +10,8 @@ export TRAVIS_BUILD_DIR=$(dirname $(readlink -nf ${BASH_SOURCE}))
 export _system_name="Ubuntu"
 
 export PROJECT_DIR=${TRAVIS_BUILD_DIR}
-source ${PROJECT_DIR}/scripts/_noisy.sh
+echo ${PROJECT_DIR}
+source ${PROJECT_DIR}/scripts/_noisy.sh && echo "win" || exit 1
 
 echo -n                                && \
     _noisy ./.travis/before_install.sh && \

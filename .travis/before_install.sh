@@ -17,6 +17,6 @@ _file="/var/lib/apt/periodic/update-success-stamp"
 
 (( "${duration}" < "604800" )) && exit 0
 
-source ${PROJECT_DIR}/scripts/_do_or_die.sh
+source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 
 _do_or_die sudo apt-get -qq update
