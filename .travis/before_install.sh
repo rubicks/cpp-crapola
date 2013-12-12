@@ -2,21 +2,35 @@
 
 # cpp-crapola/.travis/before_install.sh
 
-[ "Ubuntu" == ${_system_name} ] || exit 0
-
-duration="604800"
-seconds_since_last_modification()
-{
-    duration=$( expr $( date +%s ) - $( stat -c %Y ${@} ) )
-    return ${?}
-}
-
-_file="/var/lib/apt/periodic/update-success-stamp"
-
-[ -f ${_file} ] && seconds_since_last_modification ${_file}
-
-(( "${duration}" < "604800" )) && exit 0
+[ "${TRAVIS}" ] || exit 0
 
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 
-_do_or_die sudo apt-get -qq update
+case "${_system_name}" in
+    Ubuntu)
+        update_cmd="sudo apt-get -q update"
+        ;;
+    OSX)
+        update_cmd="brew update"
+        ;;
+    *)
+        echo "environment variable \${_system_name} has undefined value \"${_system_name}\""
+        exit 1
+esac
+
+
+_do_or_die ${update_cmd}
+
+# duration="604800"
+# seconds_since_last_modification()
+# {
+#     duration=$( expr $( date +%s ) - $( stat -c %Y ${@} ) )
+#     return ${?}
+# }
+
+# _file="/var/lib/apt/periodic/update-success-stamp"
+
+# [ -f ${_file} ] && seconds_since_last_modification ${_file}
+
+# (( "${duration}" < "604800" )) && exit 0
+
