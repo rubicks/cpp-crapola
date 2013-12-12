@@ -2,13 +2,7 @@
 
 # cpp-crapola/.travis/install.sh
 
-if [ "${TRAVIS_BRANCH}" ]
-then
-    if [ "master" != "${TRAVIS_BRANCH}" ]
-    then
-        exit 0
-    fi
-fi
+[ "Ubuntu" == ${_system_name} ] || exit 0
 
 source "${PROJECT_DIR}/scripts/_install_if_missing.sh" || exit 1
 

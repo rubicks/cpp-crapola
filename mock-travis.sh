@@ -6,8 +6,10 @@
 #
 # http://about.travis-ci.org/docs/user/build-configuration/#Build-Lifecycle
 
-export PROJECT_DIR=$(dirname $(readlink -nf ${BASH_SOURCE}))
+export TRAVIS_BUILD_DIR=$(dirname $(readlink -nf ${BASH_SOURCE}))
+export _system_name="Ubuntu"
 
+export PROJECT_DIR=${TRAVIS_BUILD_DIR}
 source ${PROJECT_DIR}/scripts/_noisy.sh
 
 echo -n                                && \
