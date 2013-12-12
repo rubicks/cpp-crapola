@@ -29,5 +29,6 @@ then
     fi
 fi
 
-sudo apt-get update
+source ${PROJECT_DIR}/scripts/_noisy.sh
 
+_noisy sudo apt-get --quiet update

@@ -6,7 +6,7 @@
 #
 # http://about.travis-ci.org/docs/user/build-configuration/#Build-Lifecycle
 
-export PROJECT_DIR=$(dirname -z $(readlink -nf ${BASH_SOURCE}))
+export PROJECT_DIR=$(dirname $(readlink -nf ${BASH_SOURCE}))
 
 source ${PROJECT_DIR}/scripts/_noisy.sh
 
