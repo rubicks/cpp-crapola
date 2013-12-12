@@ -8,7 +8,8 @@
 
 [ "master" == ${TRAVIS_BRANCH} ] || exit 0
 
-source ${PROJECT_DIR}/scripts/_do_or_die.sh
+source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
+
 _do_or_die git checkout macosx
 _do_or_die git merge master
 _do_or_die git push
