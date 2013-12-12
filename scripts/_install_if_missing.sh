@@ -10,12 +10,9 @@ function _install_if_missing()
 {
     for arg in ${@}
     do
-        _noisy dpkg-query --list ${arg}
-        ret=${?}
-        if [ 0 -ne ${ret} ]
-        then
+        echo -n                               && \
+            _noisy dpkg-query --status ${arg} || \
             _do_or_die sudo apt-get --assume-yes install ${arg}
-        fi
     done
 }
 
