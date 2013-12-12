@@ -2,12 +2,14 @@
 
 # cpp-crapola/.travis/script.sh
 
-echo -n                                       && \
-    mkdir --verbose --parents ./m4            && \
-    mkdir --verbose --parents ./build         && \
-    cd ./build                                && \
-    autoreconf --verbose --force --install .. && \
-    ../configure --verbose                    && \
-    make --debug                              && \
-    make --debug distcheck                    && \
-    cd -
+source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
+
+echo -n                                                          && \
+    _noisy mkdir --verbose --parents ${PROJECT_DIR}/m4           && \
+    _noisy autoreconf --verbose --force --install ${PROJECT_DIR} && \
+    _noisy mkdir --verbose --parents ${PROJECT_DIR}/build        && \
+    _noisy cd ${PROJECT_DIR}/build                               && \
+    _noisy ${PROJECT_DIR}/configure --verbose                    && \
+    _noisy make --debug                                          && \
+    _noisy make --debug distcheck                                && \
+    _noisy cd ${PROJECT_DIR}
