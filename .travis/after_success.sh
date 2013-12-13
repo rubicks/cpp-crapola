@@ -39,7 +39,7 @@ _branch_orig=$(git rev-parse --abbrev-ref HEAD)
 _do_or_die git checkout macosx
 _do_or_die git merge --no-edit master
 #_quiet git config branch.macosx.remote "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git"
-_quiet git push --repo="https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git push --quiet --repo="https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" 2>&1 > /dev/null
 _do_or_die git checkout ${_branch_orig}
 
 
