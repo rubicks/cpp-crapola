@@ -4,6 +4,7 @@
 
 source ${PROJECT_DIR}/scripts/_disp.sh      || exit 1
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
+source ${PROJECT_DIR}/scripts/_quiet.sh     || exit 1
 #source ${PROJECT_DIR}/scripts/_merge.sh     || exit 1
 
 _disp TRAVIS_COMMIT TRAVIS_BRANCH
@@ -37,8 +38,8 @@ fi
 _branch_orig=$(git rev-parse --abbrev-ref HEAD)
 _do_or_die git checkout macosx
 _do_or_die git merge --no-edit master
-git config branch.macosx.remote "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git" 2>&1 > /dev/null
-_do_or_die git push
+#_quiet git config branch.macosx.remote "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git"
+_quiet git push --repo="https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 _do_or_die git checkout ${_branch_orig}
 
 

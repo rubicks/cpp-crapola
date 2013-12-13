@@ -4,7 +4,7 @@ compiler:
   - gcc
 env:
   global:
-    - secure: "HvaqYrFzSaXy0OQdJ87RPARxV+VXs6Nu5Aw79OkGLxVAlsKjQW5emBEF1XrL3fqMeitY+s49dj1yQ0vtoHS4g0VRZ0ZvcsAzjiDHT3sKh3em0Qz9BGkJayxpeSyec1guZbY8XUdYm3g1op0wKW9X74qfptFnwS7NEuYkKbxxzZI="
+    - secure: "GaVQVOgt9a6u7XYKKeB4OhbEKzr+ZtQU+R5mg0ziXlwBz2cUvEKrjlvXxog3YzRSs4dVnpIjYx7iZmK7zWVtkqBgCk6ksPF33505iRSs3iOWWm71D+eYLltd3DJ/lDiJnBKlOWqJH1erzJrxDY5NEoa0EteYLhqf85ljL9OS/k4="
 before_install:
   - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
   - echo "${PROJECT_DIR}"
@@ -21,4 +21,3 @@ after_failure:
   - ./.travis/after_failure.sh
 after_script:
   - ./.travis/after_script.sh
-
