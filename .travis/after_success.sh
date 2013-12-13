@@ -41,13 +41,13 @@ _do_or_die git pull
 _do_or_die git merge --no-edit master
 
 #_quiet git config branch.macosx.remote "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git"
-echo && echo "attempting git push..."                                   && \
+echo && echo -n "attempting git push...   "                             && \
     git push                                                               \
     --quiet                                                                \
     --repo="https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"    \
     2>&1 > /dev/null                                                    && \
-    echo "   ...git push success"                                       || \
-    echo "   ...git push failure"
+    echo "success."                                                     || \
+    echo "failure."
     
 
 _do_or_die git checkout ${_branch_orig}
