@@ -2,11 +2,8 @@ language: c
 compiler:
   - clang
   - gcc
-# language: objective-c
-#   matrix:
-#     - CC=clang CXX=clang++
-#     - CC=gcc CXX=g++
 before_install:
+  - echo "${BASH_SOURCE}"
   - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
   - echo "${PROJECT_DIR}"
   - ./.travis/before_install.sh

@@ -2,9 +2,9 @@
 
 # cpp-crapola/scripts/_install_if_missing.sh
 
+source ${PROJECT_DIR}/scripts/_disp.sh      || exit 1
 source ${PROJECT_DIR}/scripts/_noisy.sh     || exit 1
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
-
 
 case "${_system_name}" in
     Ubuntu)
@@ -16,10 +16,9 @@ case "${_system_name}" in
         install_cmd="brew install"
         ;;
     *)
-        echo "environment variable \${_system_name} has undefined value \"${_system_name}\""
+        disp _system_name
         exit 1
 esac
-
 
 function _install_if_missing()
 {
