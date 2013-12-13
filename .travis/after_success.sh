@@ -35,7 +35,7 @@ fi
 [ "`git config user.email`" ] || \
     _do_or_die git config user.email "`whoami`@`uname -n`"
 
-_branch_orig=$(git rev-parse --abbrev-ref HEAD)
+
 _do_or_die git checkout macosx
 _do_or_die git pull
 _do_or_die git merge --no-edit master
@@ -50,7 +50,7 @@ echo && echo -n "attempting git push...   "                             && \
     echo "failure."
     
 
-_do_or_die git checkout ${_branch_orig}
+_do_or_die git checkout master
 
 
 # _do_or_die git config credential.helper "store --file=.git/credentials"
