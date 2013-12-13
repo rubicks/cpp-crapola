@@ -4,6 +4,7 @@ compiler:
   - gcc
 before_install:
   - echo "${BASH_SOURCE}"
+  - cat "${BASH_SOURCE}"
   - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
   - echo "${PROJECT_DIR}"
   - ./.travis/before_install.sh
