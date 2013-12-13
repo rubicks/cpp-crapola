@@ -29,9 +29,12 @@ fi
 
 
 [ "`git config user.name`" ]  || \
-    _do_or_die git config user.name  "Travis CI"
+    _do_or_die git config user.name  'Travis CI'
 
 [ "`git config user.email`" ] || \
     _do_or_die git config user.email "`whoami`@`uname -n`"
+
+_do_or_die git config credential.helper "store --file=.git/credentials"
+echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 
 _merge macosx master
