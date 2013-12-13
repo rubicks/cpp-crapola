@@ -2,7 +2,8 @@
 
 # cpp-crapola/.travis/before_install.sh
 
-[ "${TRAVIS}" ] || exit 0
+[ "${TRAVIS_JOB_ID}" ] || exit 0
+# only travis does the following (updates take time)
 
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 
@@ -14,10 +15,9 @@ case "${_system_name}" in
         update_cmd="brew update"
         ;;
     *)
-        echo "environment variable \${_system_name} has undefined value \"${_system_name}\""
+        _disp _system_name
         exit 1
 esac
-
 
 _do_or_die ${update_cmd}
 

@@ -2,7 +2,8 @@
 
 # cpp-crapola/scripts/_do_or_die.sh
 
-source ${PROJECT_DIR}/scripts/_noisy.sh || exit 1
+_dir=$(dirname ${BASH_SOURCE})
+source ${_dir}/_noisy.sh || exit 1
 
 function _do_or_die()
 {
