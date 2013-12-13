@@ -47,6 +47,8 @@ AC_HEADER_STDC
 
 # checks for libraries
 AX_BOOST_BASE([1.48])
+AX_CXX_HAVE_STD
+AX_CXX_HAVE_STL
 
 AC_CONFIG_FILES([Makefile])
 
