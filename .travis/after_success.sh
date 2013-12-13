@@ -4,7 +4,7 @@
 
 source ${PROJECT_DIR}/scripts/_disp.sh      || exit 1
 source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
-source ${PROJECT_DIR}/scripts/_merge.sh     || exit 1
+#source ${PROJECT_DIR}/scripts/_merge.sh     || exit 1
 
 _disp TRAVIS_COMMIT TRAVIS_BRANCH
 
@@ -34,7 +34,14 @@ fi
 [ "`git config user.email`" ] || \
     _do_or_die git config user.email "`whoami`@`uname -n`"
 
-_do_or_die git config credential.helper "store --file=.git/credentials"
-echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
+_branch_orig=$(git rev-parse --abbrev-ref HEAD)
+_do_or_die git checkout macosx
+_do_or_die git merge --no-edit master
+_do_or_die git push "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git"
+_do_or_die git checkout ${_branch_orig}
 
-_merge macosx master
+
+# _do_or_die git config credential.helper "store --file=.git/credentials"
+# echo  > .git/credentials
+
+# _merge macosx master
