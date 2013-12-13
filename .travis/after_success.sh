@@ -30,7 +30,7 @@ fi
 
 
 [ "`git config user.name`" ]  || \
-    _do_or_die git config user.name  'Travis CI'
+    _do_or_die git config user.name  'Travis-CI'
 
 [ "`git config user.email`" ] || \
     _do_or_die git config user.email "`whoami`@`uname -n`"
@@ -41,13 +41,13 @@ _do_or_die git pull
 _do_or_die git merge --no-edit master
 
 #_quiet git config branch.macosx.remote "https://${GITHUB_TOKEN}@github.com/rubicks/cpp-crapola.git"
-echo -n                                                                 && \
+echo && echo "attempting git push..."                                   && \
     git push                                                               \
     --quiet                                                                \
     --repo="https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"    \
     2>&1 > /dev/null                                                    && \
-    echo "git push success"                                             || \
-    echo "git push failure"
+    echo "   ...git push success"                                       || \
+    echo "   ...git push failure"
     
 
 _do_or_die git checkout ${_branch_orig}
