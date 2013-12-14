@@ -16,7 +16,12 @@ before_script:
 script:
   - ./.travis/script.sh
 after_success:
-  - ./.travis/after_success.sh
+  - [ "${TRAVIS_COMMIT}" ] || exit 0
+  - echo "\${TRAVIS_COMMIT} == \"${TRAVIS_COMMIT}\"
+  - [ "master" == "${TRAVIS_BRANCH}" ] || exit 0
+  - echo "this is the master branch"
+  - exit 0
+  - echo "this should never print"
 after_failure:
   - ./.travis/after_failure.sh
 after_script:
