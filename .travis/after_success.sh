@@ -9,24 +9,11 @@ source ${PROJECT_DIR}/scripts/_quiet.sh     || exit 1
 
 _disp TRAVIS_COMMIT TRAVIS_BRANCH
 
-if [ "${TRAVIS_COMMIT}" ]
-then
-    echo "TRAVIS_COMMIT defined"
-else
-    echo "TRAVIS_COMMIT undefined"
-    exit 0
-fi
-    
-if [ "master" == "${TRAVIS_BRANCH}" ]
-then
-    echo "TRAVIS_BRANCH is master"
-else
-    echo "TRAVIS_BRANCH is not master"
-    exit 0
-fi
+[ "${TRAVIS_COMMIT}" ]             || exit 0
+[ "master" == "${TRAVIS_BRANCH}" ] || exit 0
+# [ "clang" == "${CC}" ]             || exit 0
 
-
-# only travis does the following (automate the merge!)
+# get to here: travis, master branch
 
 
 [ "`git config user.name`" ]  || \
@@ -34,7 +21,6 @@ fi
 
 [ "`git config user.email`" ] || \
     _do_or_die git config user.email "`whoami`@`uname -n`"
-
 
 _do_or_die git checkout macosx
 _do_or_die git pull
@@ -48,12 +34,5 @@ echo && echo -n "attempting git push...   "                             && \
     2>&1 > /dev/null                                                    && \
     echo "success."                                                     || \
     echo "failure."
-    
 
 _do_or_die git checkout master
-
-
-# _do_or_die git config credential.helper "store --file=.git/credentials"
-# echo  > .git/credentials
-
-# _merge macosx master
