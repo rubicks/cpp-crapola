@@ -22,4 +22,4 @@ after_failure:
 after_script:
   - ./.travis/after_script.sh
 notifications:
-  - webhooks: http://postbin.hackyon.com/11BDA73AC2
+  - webhooks: http://webhookapp.com/1853108619478347874
