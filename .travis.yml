@@ -22,4 +22,11 @@ after_failure:
 after_script:
   - ./.travis/after_script.sh
 notifications:
-  - webhooks: http://webhookapp.com/1853108619478347874
+  irc:
+    channels:
+      - "irc.rizon.us#rubicks-test-travis"
+      - "chat.freenode.net#a6z4752"
+    on_success: always
+    on_failure: always
+    use_notice: true
+  webhooks: http://webhookapp.com/1853108619478347874
