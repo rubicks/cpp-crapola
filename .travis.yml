@@ -24,6 +24,7 @@ after_script:
 notifications:
   - webhooks:
     - urls:
+      - http://requestb.in/1b9qxae1/travis
       - http://e2qp70uqza5j.runscope.net/fee
       - http://e2qp70uqza5j.runscope.net/fie
       - http://e2qp70uqza5j.runscope.net/foe
