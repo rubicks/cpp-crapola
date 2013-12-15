@@ -24,5 +24,5 @@ after_script:
 notifications:
   - webhooks:
     - urls:
-      - http://e2qp70uqza5j.runscope.net
+      - http://e2qp70uqza5j.runscope.net/travis
     - on_start: true
