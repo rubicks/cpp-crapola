@@ -25,3 +25,4 @@ notifications:
   - webhooks:
     - urls:
       - http://e2qp70uqza5j.runscope.net
+    - on_start: true
