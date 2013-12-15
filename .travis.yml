@@ -24,4 +24,4 @@ after_script:
 notifications:
   - webhooks:
     - urls:
-      - https://e2qp70uqza5j.runscope.net
+      - http://e2qp70uqza5j.runscope.net
