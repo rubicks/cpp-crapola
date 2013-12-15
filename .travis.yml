@@ -21,3 +21,7 @@ after_failure:
   - ./.travis/after_failure.sh
 after_script:
   - ./.travis/after_script.sh
+notifications:
+  - webhooks:
+    - urls:
+      - https://e2qp70uqza5j.runscope.net
