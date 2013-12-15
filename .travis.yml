@@ -17,7 +17,7 @@ script:
   - ./.travis/script.sh
 after_success:
   - if [ -n "${TRAVIS_COMMIT}" ] ; then exit 0 ; fi
-  - echo "\${TRAVIS_COMMIT} == \"${TRAVIS_COMMIT}\"
+  - echo "\${TRAVIS_COMMIT} == \"${TRAVIS_COMMIT}\""
   - if [ "master" != "${TRAVIS_BRANCH}" ] ; then exit 0 ; fi
   - echo "this is the master branch"
   - exit 0
