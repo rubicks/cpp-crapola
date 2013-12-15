@@ -24,12 +24,15 @@ after_script:
 notifications:
   irc:
     channels:
-      - "irc.rizon.us#rubicks-test-travis"
-      - "chat.freenode.net#a6z4752"
+      - "irc.rizon.net#rubicks-test-travis"
     on_success: always
     on_failure: always
+    on_start: true
     use_notice: true
   webhooks:
     urls:
       - http://webhookapp.com/1853108619478347874
       - http://e2qp70uqza5j.runscope.net/travis
+    on_success: always
+    on_failure: always
+    on_start: true
