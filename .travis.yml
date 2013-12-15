@@ -29,4 +29,7 @@ notifications:
     on_success: always
     on_failure: always
     use_notice: true
-  webhooks: http://webhookapp.com/1853108619478347874
+  webhooks:
+    urls:
+      - http://webhookapp.com/1853108619478347874
+      - http://e2qp70uqza5j.runscope.net/travis
