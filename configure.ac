@@ -4,7 +4,6 @@
 
 AC_PREREQ([2.68])
 
-
 # define package information
 AC_INIT([cpp-crapola],
         [0.0.1],
@@ -12,15 +11,15 @@ AC_INIT([cpp-crapola],
         [cpp-crapola],
         [https://github.com/rubicks/cpp-crapola])
 
-
-# configure autoconf
-AC_CONFIG_HEADERS([config.h])
-#AC_CONFIG_SRCDIR([config.h])
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_SRCDIR([configure.ac])
 
 # configure automake
 AM_INIT_AUTOMAKE
 
+# configure autoconf
+AC_CONFIG_HEADERS([config.h])
+
+AC_CONFIG_MACRO_DIR([m4])
 
 # check for programs
 AC_PROG_AWK
@@ -46,7 +45,7 @@ AC_HEADER_STDC
 # Checks for library functions.
 
 # checks for libraries
-AX_BOOST_BASE([1.48])
+AX_BOOST_BASE([1.46.0],,AC_MSG_ERROR([Boost >= v1.46.0 missing]))
 AX_CXX_HAVE_STD
 AX_CXX_HAVE_STL
 
