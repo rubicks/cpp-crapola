@@ -45,7 +45,7 @@ AC_HEADER_STDC
 # Checks for library functions.
 
 # checks for libraries
-AX_BOOST_BASE([1.48],,AC_MSG_ERROR([no compatible boost library found]))
+AX_BOOST_BASE([1.46.0],,AC_MSG_ERROR([Boost >= v1.46.0 missing]))
 AX_CXX_HAVE_STD
 AX_CXX_HAVE_STL
 
