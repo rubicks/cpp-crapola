@@ -12,7 +12,14 @@ libbt_a_SOURCES =			\
     $(top_srcdir)/backtrace/bt.cpp
 # libbt_a_CXXFLAGS = -rdynamic
 
-bin_PROGRAMS = backtrace
+bin_PROGRAMS = backtrace llrev
+
 backtrace_SOURCES = $(top_srcdir)/backtrace/main.cpp
+
 # backtrace_CXXFLAGS = -rdynamic
 backtrace_LDADD = libbt.a
+
+llrev_SOURCES =				\
+    $(top_srcdir)/linkedlist/ll.hpp	\
+    $(top_srcdir)/linkedlist/rev.hpp	\
+    $(top_srcdir)/linkedlist/rev.cpp

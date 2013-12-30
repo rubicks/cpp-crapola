@@ -1,11 +1,11 @@
 /* ll/rev.cpp */
 
 
-#include"rev.hpp"
+#include<iostream>
 
 #include<boost/utility.hpp>
 
-#include<iostream>
+#include"rev.hpp"
 
 
 namespace
@@ -32,13 +32,21 @@ namespace
         return ret ;
     }
 
-
-    std::ostream&operator<<( std::ostream&os, node_type const&p )
+    std::ostream&operator<<( std::ostream&os, node_type const&o )
     {
-        return os
-            << "node @ " << std::hex << std::showbase << boost::addressof( p )
-            << " ; value_ == " << std::dec << p.value_
-            ;
+        node_type const*p = boost::addressof( o );
+        while( p ){
+            os
+                << "node @ "
+                << std::hex << std::showbase << p
+                << " ; value_ == " << std::dec << p->value_
+                << " ; next_ == "
+                << std::hex << std::showbase << p->next_
+                << std::endl
+                ;
+            p = p->next_ ;
+        }
+        return os ;
     }
 }
 
@@ -48,27 +56,22 @@ main( int, char** )
 {
     node_type*p = _new( 0 );
 
-    std::cout << "*p == { " << *p << " }" << std::endl ;
-
     {
         node_type*tmp = p;
         for( int i = 1; i < 8; ++i ){
             tmp->next_ = _new( i );
             tmp = tmp->next_ ;
-            std::cout << *tmp << std::endl ;
+            //std::cout << *tmp << std::endl ;
         }
     }
 
-    std::cout << "*p == { " << *p << " }" << std::endl ;
+    std::cout << *p << std::endl ;
 
-    {
-        node_type*tmp = p ;
-        while( NULL != tmp ){
-            std::cout << *tmp << std::endl ;
-            tmp = tmp->next_ ;
-        }
-    }
+    p = ll::rev::in_place( p );
+
+    std::cout << *p << std::endl ;
 
     _delete( p );
+
     return EXIT_SUCCESS ;
 }
