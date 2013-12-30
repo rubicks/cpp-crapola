@@ -1,7 +1,7 @@
 language: objective-c
 env:
   global:
-    - secure: "GrvBB3X/FO+Wpw3E17WnXXAiCGqrYYvqNCl+y7QVMMXRsOr2EqbtR4yBGg41iDmHv7xcy60TlsQZFxF2jmW2WSs9LNvm3IIrp0HqLc0L/dQHhHESD7OyXTCXUqr+ydJO1uvbMqFjtfN/nCx+y7Rh93BTMkeGmFjdTCgDNQSgoYg="
+    - secure: "L4b7bTgkaMc1X8Xu65uL2/Q8KX/ihx+0VtBWowvrnYXMMI5ALwBBhcVoOS3BglUYR5X6sEoxrzNNiRv4F4CLD1KsTifaaCP0NhszIQH3A9UW5EuGGJPX4mrTE7q3OSJVg+KsqWeDUjhVZTOEAzS4nZN54JQtKCmYSixYM27KND4="
   matrix:
     - CC=clang CXX=clang++
     - CC=gcc CXX=g++

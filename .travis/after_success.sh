@@ -7,13 +7,14 @@ source ${PROJECT_DIR}/scripts/_do_or_die.sh || exit 1
 source ${PROJECT_DIR}/scripts/_quiet.sh     || exit 1
 #source ${PROJECT_DIR}/scripts/_merge.sh     || exit 1
 
-_disp TRAVIS_COMMIT TRAVIS_BRANCH
+_disp TRAVIS_PULL_REQUEST TRAVIS_BRANCH TRAVIS_COMMIT
 
-[ "${TRAVIS_COMMIT}" ]             || exit 0
-[ "master" == "${TRAVIS_BRANCH}" ] || exit 0
+[ "false"  == "${TRAVIS_PULL_REQUEST}" ] || exit 0
+[ "master" == "${TRAVIS_BRANCH}" ]       || exit 0
+[ -n "${TRAVIS_COMMIT}" ]                || exit 0
 # [ "clang" == "${CC}" ]             || exit 0
 
-# get to here: travis, master branch
+# get to here: not a pull request, is master branch, has travis commit sha1
 
 
 [ "`git config user.name`" ]  || \
