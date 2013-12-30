@@ -5,6 +5,10 @@
 #define CPP_CRAPOLA___LINKEDLIST___LL_HPP
 
 
+#include<cstddef>
+#include<utility>
+
+
 namespace ll
 {
     template< typename T >
