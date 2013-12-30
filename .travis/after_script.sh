@@ -2,4 +2,4 @@
 
 # cpp-crapola/.travis/after_script.sh
 
-env | sort
+unset GITHUB_TOKEN && env | sort
