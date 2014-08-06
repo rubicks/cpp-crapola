@@ -1,6 +1,7 @@
+# cpp-crapola/configure.ac
+
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
-
 
 AC_PREREQ([2.68])
 
@@ -37,12 +38,13 @@ AC_PROG_MAKE_SET
 AC_LANG_PUSH([C++])
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h sys/time.h])
+AC_CHECK_HEADERS([stdlib.h sys/time.h sys/resource.h])
 AC_HEADER_STDC
 
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+#AC_CHECK_FUNCS([getrlimit],,AC_MSG_ERROR([getrlimit missing]))
 
 # checks for libraries
 AX_BOOST_BASE([1.46.0],,AC_MSG_ERROR([Boost >= v1.46.0 missing]))

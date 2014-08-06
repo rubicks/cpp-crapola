@@ -27,17 +27,13 @@
 
 namespace
 {
-
-    typedef struct rlimit rlimit_type ;
-
-
     struct _error : virtual std::exception, virtual boost::exception{} ;
 
 
-    rlimit_type
+    rlimit
     _getrlimit( int resource )
     {
-        rlimit_type ret ;
+        rlimit ret ;
         if( 0 != getrlimit( resource, boost::addressof( ret ) ) )
             BOOST_THROW_EXCEPTION
                 ( _error()
@@ -47,13 +43,12 @@ namespace
     }
 
 
-    rlim_t _cur( const rlimit_type&o ){ return o.rlim_cur ; }
-    rlim_t _max( const rlimit_type&o ){ return o.rlim_max ; }
+    rlim_t _cur( const rlimit&o ){ return o.rlim_cur ; }
+    rlim_t _max( const rlimit&o ){ return o.rlim_max ; }
 
 
     std::ostream&
-    operator<<( std::ostream&os,
-                const rlimit_type o )
+    operator<<( std::ostream&os, rlimit const&o )
     {
         return os
             << "{ rlim_cur: " << std::dec << _cur( o )
@@ -66,9 +61,18 @@ namespace
     std::vector< void* >
     _backtrace( void )
     {
-        std::vector< void* >ret;
-        ret.resize( _cur( _getrlimit( RLIMIT_STACK ) ) );
-        ret.resize( backtrace( boost::addressof( ret.at( 0 ) ), ret.size() ) );
+        std::vector< void* >ret ;
+        {
+            rlim_t n = _cur( _getrlimit( RLIMIT_STACK ) );
+            ret.resize( n );
+        }
+        {
+            void**buffer = boost::addressof( ret.at( 0 ) );
+            int size = ret.size();
+            rlim_t n = backtrace( buffer, size );
+            ret.resize( n );
+            ret.erase( ret.begin() );
+        }
         return ret ;
     }
 
@@ -76,13 +80,15 @@ namespace
     std::vector< std::string >
     _stacktrace( std::vector< void* >const&bt )
     {
-        std::vector< std::string >ret;
-        char**a =
-            backtrace_symbols
-            ( boost::addressof( bt.at( 0 ) ), bt.size() );
-        if( a ){
-            std::copy( a, a + bt.size(), std::back_inserter( ret ) );
-            free( a );
+        std::vector< std::string >ret ;
+        {
+            char**a =
+                backtrace_symbols
+                ( boost::addressof( bt.at( 0 ) ), bt.size() );
+            if( a ){
+                std::copy( a, a + bt.size(), std::back_inserter( ret ) );
+                free( a );
+            }
         }
         return ret ;
     }
@@ -92,22 +98,83 @@ namespace
         return _stacktrace( _backtrace() );
     }
 
+
+    template< typename C >
+    std::ostream&
+    _spit_container( std::ostream&os, C const&c )
+    {
+        typedef typename C::value_type value_type ;
+        std::copy
+            ( c.begin(), c.end(),
+              std::ostream_iterator< value_type >
+              ( os << std::endl << std::hex, "\n" ) );
+        return os ;
+    }
+
 }//end anonymous namespace
 
 
+
+void qux( void ){
+    std::vector< void* >bt;
+    {
+        rlim_t n = _cur( _getrlimit( RLIMIT_STACK ) );
+        bt.resize( n );
+    }
+    {
+        void**buffer = boost::addressof( bt.at( 0 ) );
+        int size = bt.size();
+        rlim_t n = backtrace( buffer, size );
+        bt.resize( n );
+    }
+
+    _spit_container( std::cout, bt );
+
+    std::vector< std::string >st;
+    {
+        char**a =
+            backtrace_symbols
+            ( boost::addressof( bt.at( 0 ) ), bt.size() );
+        if( a ){
+            std::copy( a, a + bt.size(), std::back_inserter( st ) );
+            free( a );
+        }
+    }
+
+    _spit_container( std::cout, st );
+}
+
+void bar( void ){
+    qux();
+}
+
+void foo( void ){
+    bar();
+}
 
 
 int bt::main( int, char** )
 {
 #if defined( __clang__ )
-    std::cout << "__clang__" << BOOST_PP_STRINGIZE( __clang__ ) << std::endl ;
+    std::cout
+        << std::endl
+        << "__clang__ == "
+        << BOOST_PP_STRINGIZE( __clang__ )
+        << std::endl
+        ;
 #elif defined( __GNUC__ )
-    std::cout << "__GNUC__" << BOOST_PP_STRINGIZE( __GNUC__ ) << std::endl ;
+    std::cout
+        << std::endl
+        << "__GNUC__ == "
+        << BOOST_PP_STRINGIZE( __GNUC__ )
+        << std::endl
+        ;
 #else
 #  error "unsupported compiler"
 #endif
 
     std::cout
+        << std::endl
         << "_getrlimit( RLIMIT_STACK ) == "
         << _getrlimit( RLIMIT_STACK )
         << std::endl
@@ -120,19 +187,12 @@ int bt::main( int, char** )
         ;
 
     std::vector< void* >const bt( _backtrace() );
+    _spit_container( std::cout, bt );
 
-    std::copy
-        ( bt.begin(), bt.end(),
-          std::ostream_iterator< void* >( std::cout << std::hex, "\n" ) );
+    std::vector< std::string >const st( _stacktrace() );
+    _spit_container( std::cout, st );
 
-
-    {
-        std::vector< std::string >const st( _stacktrace() );
-        std::copy
-            ( st.begin(), st.end(),
-              std::ostream_iterator< std::string >
-              ( std::cout << std::hex, "\n" ) );
-    }
+    foo();
 
     return EXIT_SUCCESS ;
 }
