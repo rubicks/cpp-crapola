@@ -7,19 +7,18 @@ AM_CXXFLAGS = -Wall -Wextra -Werror -pedantic-errors -rdynamic
 #AM_LDFLAGS = -s #-rdynamic
 
 noinst_LIBRARIES = libbt.a
-libbt_a_SOURCES =			\
-    $(top_srcdir)/backtrace/bt.hpp	\
-    $(top_srcdir)/backtrace/bt.cpp
-#libbt_a_CXXFLAGS = -rdynamic
+libbt_a_SOURCES =	\
+    backtrace/bt.hpp	\
+    backtrace/bt.cpp
 
-bin_PROGRAMS = backtrace llrev
+bin_PROGRAMS = batr llrev spar
 
-backtrace_SOURCES = $(top_srcdir)/backtrace/main.cpp
+batr_SOURCES = backtrace/main.cpp
+batr_LDADD = libbt.a
 
-#backtrace_CXXFLAGS = -rdynamic
-backtrace_LDADD = libbt.a
+llrev_SOURCES =		\
+    linkedlist/ll.hpp	\
+    linkedlist/rev.hpp	\
+    linkedlist/rev.cpp
 
-llrev_SOURCES =				\
-    $(top_srcdir)/linkedlist/ll.hpp	\
-    $(top_srcdir)/linkedlist/rev.hpp	\
-    $(top_srcdir)/linkedlist/rev.cpp
+spar_SOURCES = sparsity/main.cpp

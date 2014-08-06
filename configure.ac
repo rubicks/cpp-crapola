@@ -15,7 +15,7 @@ AC_INIT([cpp-crapola],
 AC_CONFIG_SRCDIR([configure.ac])
 
 # configure automake
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([subdir-objects])
 
 # configure autoconf
 AC_CONFIG_HEADERS([config.h])
