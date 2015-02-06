@@ -11,16 +11,16 @@ before_install:
   - uname -a
   - lsb_release --all
   - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
-  - sudo apt-get -y update
-  - sudo apt-get -y dist-upgrade
-  - sudo apt-get -y autoremove
-  - sudo apt-get -y autoclean
+  - sudo apt-get -qq update
+  - sudo apt-get -qq dist-upgrade
+  - sudo apt-get -qq autoremove
+  - sudo apt-get -qq autoclean
 
 install:
-  - sudo apt-get -y install autoconf
-  - sudo apt-get -y install autoconf-archive
-  - sudo apt-get -y install automake
-  - sudo apt-get -y install libtool
+  - sudo apt-get -qq install autoconf
+  - sudo apt-get -qq install autoconf-archive
+  - sudo apt-get -qq install automake
+  - sudo apt-get -qq install libtool
 
 script:
   - export BUILD_DIR=`mktemp -d`
