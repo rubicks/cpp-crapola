@@ -11,7 +11,14 @@ libbt_a_SOURCES =	\
     backtrace/bt.hpp	\
     backtrace/bt.cpp
 
-bin_PROGRAMS = batr llrev spar
+
+bin_PROGRAMS = \
+  batr         \
+  llrev        \
+  mort         \
+  spar
+
+
 
 batr_SOURCES = backtrace/main.cpp
 batr_LDADD = libbt.a
@@ -22,3 +29,6 @@ llrev_SOURCES =		\
     linkedlist/rev.cpp
 
 spar_SOURCES = sparsity/main.cpp
+
+
+mort_SOURCES = morton/main.cpp

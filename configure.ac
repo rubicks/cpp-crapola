@@ -26,19 +26,33 @@ AX_CXX_COMPILE_STDCXX_11
 
 # check for headers
 
-AC_CHECK_HEADERS([stdlib.h sys/time.h sys/resource.h])
+AC_CHECK_HEADERS([cinttypes stdlib.h sys/time.h sys/resource.h])
 AC_HEADER_STDC
 
 
 # Checks for typedefs, structures, and compiler characteristics.
 
+AC_TYPE_UINT8_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+
+AC_TYPE_INT8_T
+AC_TYPE_INT16_T
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+
+
 # Checks for library functions.
 #AC_CHECK_FUNCS([getrlimit],,AC_MSG_ERROR([getrlimit missing]))
 
+
 # checks for libraries
+
 AX_BOOST_BASE([1.46.0],,AC_MSG_ERROR([Boost >= v1.46.0 missing]))
 AX_CXX_HAVE_STD
 AX_CXX_HAVE_STL
+
 
 AC_CONFIG_FILES([Makefile])
 
