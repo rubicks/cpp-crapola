@@ -5,16 +5,35 @@ compiler:
 env:
   global:
     - secure: "L4b7bTgkaMc1X8Xu65uL2/Q8KX/ihx+0VtBWowvrnYXMMI5ALwBBhcVoOS3BglUYR5X6sEoxrzNNiRv4F4CLD1KsTifaaCP0NhszIQH3A9UW5EuGGJPX4mrTE7q3OSJVg+KsqWeDUjhVZTOEAzS4nZN54JQtKCmYSixYM27KND4="
+
+
 before_install:
+  - uname -a
+  - lsb_release --all
   - export PROJECT_DIR=${TRAVIS_BUILD_DIR}
-  - echo "${PROJECT_DIR}"
-  - ./.travis/before_install.sh
+  - sudo apt-get -y update
+  - sudo apt-get -y dist-upgrade
+  - sudo apt-get -y autoremove
+  - sudo apt-get -y autoclean
+
 install:
-  - ./.travis/install.sh
-before_script:
-  - ./.travis/before_script.sh
+  - sudo apt-get -y install autoconf
+  - sudo apt-get -y install autoconf-archive
+  - sudo apt-get -y install automake
+  - sudo apt-get -y install libtool
+
 script:
-  - ./.travis/script.sh
+  - export BUILD_DIR=`mktemp -d`
+  - export PREFIX_DIR=`mktemp -d`
+  - export PATH="${PREFIX_DIR}/bin:${PATH}"
+  - cd ${BUILD_DIR}
+  - autoreconf -ivf ${PROJECT_DIR}
+  - ${PROJECT_DIR}/configure --prefix=${PREFIX_DIR}
+  - make
+  - make check
+  - make distcheck
+  - make install
+
 after_success:
   - ./.travis/after_success.sh
 after_failure:
