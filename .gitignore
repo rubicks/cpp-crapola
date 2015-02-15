@@ -29,5 +29,5 @@
 /depcomp
 /install-sh
 /ltmain.sh
-/m4/
+/m4/*.m4
 /missing

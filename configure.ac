@@ -55,12 +55,6 @@ AX_CXX_HAVE_STD
 AX_CXX_HAVE_STL
 
 
-# create the m4 directory (obviated in autoconf 2.67)
-(
-  $MKDIR_P m4
-)
-
-
 AC_CONFIG_FILES([Makefile])
 
 AC_OUTPUT
