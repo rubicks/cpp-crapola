@@ -22,6 +22,7 @@ LT_INIT([])
 # check for programs
 
 AX_CXX_COMPILE_STDCXX_11
+AC_PROG_MKDIR_P
 
 
 # check for headers
@@ -52,6 +53,12 @@ AC_TYPE_INT64_T
 AX_BOOST_BASE([1.46.0],,AC_MSG_ERROR([Boost >= v1.46.0 missing]))
 AX_CXX_HAVE_STD
 AX_CXX_HAVE_STL
+
+
+# create the m4 directory (obviated in autoconf 2.67)
+(
+  $MKDIR_P m4
+)
 
 
 AC_CONFIG_FILES([Makefile])
