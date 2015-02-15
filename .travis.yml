@@ -19,6 +19,7 @@ install:
   - sudo apt-get -qq install autoconf
   - sudo apt-get -qq install autoconf-archive
   - sudo apt-get -qq install automake
+  - sudo apt-get -qq install libboost-dev
   - sudo apt-get -qq install libtool
 
 script:
