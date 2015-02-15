@@ -15,7 +15,6 @@ libbt_a_SOURCES =	\
 bin_PROGRAMS = \
   batr         \
   llrev        \
-  mort         \
   spar
 
 
@@ -31,4 +30,3 @@ llrev_SOURCES =		\
 spar_SOURCES = sparsity/main.cpp
 
 
-mort_SOURCES = morton/main.cpp
